@@ -1,0 +1,1262 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DRIPZY | Wear Your Vibe</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --pink: #ff3f8e;
+    --black: #202020;
+    --gray: #777;
+    --light: #f7f7f7;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: var(--black);
+    background: white;
+}
+
+.announcement {
+    background: #202020;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+.announcement span {
+    color: #ffcc70;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: white;
+    box-shadow: 0 2px 10px #0000000c;
+}
+
+nav {
+    max-width: 1400px;
+    margin: auto;
+    padding: 18px 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.logo {
+    font-size: 30px;
+    font-weight: 900;
+    letter-spacing: -2px;
+    color: var(--black);
+    white-space: nowrap;
+}
+
+.logo span {
+    color: var(--pink);
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links button {
+    border: none;
+    background: none;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+.nav-links button:hover {
+    color: var(--pink);
+}
+
+.search {
+    flex: 1;
+    max-width: 350px;
+}
+
+.search input {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    background: var(--light);
+    border-radius: 5px;
+    outline: none;
+}
+
+.actions {
+    display: flex;
+    gap: 14px;
+}
+
+.actions button {
+    border: none;
+    background: white;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.hero {
+    max-width: 1400px;
+    margin: 25px auto;
+    padding: 0 25px;
+}
+
+.hero-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: #f7e9e5;
+    min-height: 430px;
+}
+
+.hero-text {
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.eyebrow {
+    color: var(--pink);
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.hero h1 {
+    font-size: clamp(45px, 6vw, 78px);
+    line-height: .95;
+    margin: 20px 0;
+    letter-spacing: -4px;
+}
+
+.hero h1 em {
+    color: var(--pink);
+}
+
+.hero p {
+    color: #666;
+    line-height: 1.8;
+    max-width: 350px;
+    margin-bottom: 20px;
+}
+
+.btn {
+    background: var(--black);
+    color: white;
+    border: none;
+    padding: 14px 23px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.btn:hover {
+    background: var(--pink);
+}
+
+.hero-image {
+    min-height: 430px;
+}
+
+.hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.section {
+    max-width: 1400px;
+    margin: auto;
+    padding: 45px 5%;
+}
+
+.section-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.section-title h2 {
+    font-size: 32px;
+}
+
+.categories {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.category {
+    border: none;
+    background: var(--light);
+    cursor: pointer;
+    text-align: left;
+    overflow: hidden;
+}
+
+.category img {
+    width: 100%;
+    height: 210px;
+    object-fit: cover;
+    transition: .3s;
+}
+
+.category:hover img {
+    transform: scale(1.04);
+}
+
+.category h3 {
+    padding: 15px;
+    font-size: 14px;
+}
+
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.filter {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 25px;
+    padding: 10px 16px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.filter.active,
+.filter:hover {
+    background: var(--black);
+    color: white;
+}
+
+.shop-tools {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+select {
+    padding: 10px;
+    border: 1px solid #ddd;
+    background: white;
+}
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 25px 15px;
+}
+
+.product {
+    min-width: 0;
+}
+
+.product-image {
+    position: relative;
+    background: var(--light);
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: .3s;
+}
+
+.product:hover .product-image img {
+    transform: scale(1.04);
+}
+
+.tag {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: white;
+    padding: 6px;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.heart {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: white;
+    border: none;
+    border-radius: 50%;
+    width: 34px;
+    height: 34px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.heart.liked {
+    color: var(--pink);
+}
+
+.add {
+    position: absolute;
+    bottom: 8px;
+    left: 8px;
+    right: 8px;
+    width: calc(100% - 16px);
+    padding: 12px;
+    border: none;
+    background: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.add:hover {
+    background: var(--pink);
+    color: white;
+}
+
+.product-info {
+    padding-top: 12px;
+}
+
+.brand {
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.name {
+    color: var(--gray);
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.price {
+    font-size: 13px;
+    font-weight: bold;
+    margin-top: 9px;
+}
+
+.old-price {
+    text-decoration: line-through;
+    color: #999;
+    font-weight: normal;
+    margin-left: 5px;
+}
+
+.discount {
+    color: #15935b;
+    font-size: 11px;
+    margin-left: 4px;
+}
+
+.rating {
+    font-size: 11px;
+    margin-top: 8px;
+    color: #148452;
+}
+
+.empty {
+    display: none;
+    padding: 40px;
+    text-align: center;
+}
+
+.promo {
+    margin: 40px 5%;
+    background: var(--black);
+    color: white;
+    padding: 45px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.promo h2 {
+    font-size: 32px;
+    margin: 10px 0;
+}
+
+.promo p {
+    color: #ccc;
+    font-size: 13px;
+}
+
+.newsletter {
+    background: #f7f2ef;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.newsletter h2 {
+    margin: 12px 0;
+}
+
+.newsletter p {
+    color: var(--gray);
+    font-size: 13px;
+    margin: 12px;
+}
+
+.newsletter form {
+    display: flex;
+    max-width: 420px;
+    margin: 20px auto;
+}
+
+.newsletter input {
+    flex: 1;
+    min-width: 0;
+    padding: 14px;
+    border: 1px solid #ddd;
+}
+
+.newsletter button {
+    padding: 14px;
+    border: none;
+    background: var(--pink);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+footer {
+    padding: 30px 5%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+footer p {
+    color: var(--gray);
+    font-size: 12px;
+    margin-top: 10px;
+}
+
+.overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 19;
+    background: #0008;
+    display: none;
+}
+
+.overlay.show {
+    display: block;
+}
+
+.drawer {
+    position: fixed;
+    z-index: 20;
+    top: 0;
+    right: -450px;
+    width: min(420px, 100%);
+    height: 100%;
+    background: white;
+    padding: 22px;
+    transition: .3s;
+    display: flex;
+    flex-direction: column;
+}
+
+.drawer.show {
+    right: 0;
+}
+
+.drawer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+.drawer-header button {
+    border: none;
+    background: white;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.bag-items {
+    overflow-y: auto;
+    flex: 1;
+}
+
+.bag-item {
+    display: grid;
+    grid-template-columns: 75px 1fr;
+    gap: 12px;
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.bag-item img {
+    width: 75px;
+    height: 95px;
+    object-fit: cover;
+}
+
+.bag-item h4 {
+    font-size: 12px;
+    margin-bottom: 8px;
+}
+
+.bag-item p {
+    font-size: 12px;
+    margin-bottom: 8px;
+}
+
+.qty button {
+    width: 25px;
+    height: 25px;
+    background: white;
+    border: 1px solid #ddd;
+    cursor: pointer;
+}
+
+.remove {
+    display: block;
+    border: none;
+    background: white;
+    color: var(--pink);
+    margin-top: 8px;
+    cursor: pointer;
+}
+
+.bag-footer {
+    border-top: 1px solid #ddd;
+    padding-top: 20px;
+}
+
+.total {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.bag-footer .btn {
+    width: 100%;
+}
+
+.toast {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--black);
+    color: white;
+    padding: 13px 20px;
+    z-index: 30;
+    display: none;
+    font-size: 13px;
+}
+
+.toast.show {
+    display: block;
+}
+
+@media (max-width: 900px) {
+    nav {
+        flex-wrap: wrap;
+    }
+
+    .nav-links {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .search {
+        max-width: none;
+    }
+
+    .products {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .categories {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hero-text {
+        padding: 35px;
+    }
+}
+
+@media (max-width: 600px) {
+    nav {
+        padding: 15px;
+    }
+
+    .logo {
+        font-size: 25px;
+    }
+
+    .nav-links {
+        gap: 12px;
+        overflow-x: auto;
+        justify-content: flex-start;
+    }
+
+    .nav-links button {
+        font-size: 10px;
+        white-space: nowrap;
+    }
+
+    .search {
+        order: 4;
+        flex-basis: 100%;
+    }
+
+    .actions {
+        gap: 8px;
+    }
+
+    .actions button {
+        font-size: 11px;
+    }
+
+    .hero {
+        padding: 0 12px;
+    }
+
+    .hero-content {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-text {
+        padding: 35px 25px;
+    }
+
+    .hero h1 {
+        font-size: 56px;
+    }
+
+    .hero-image {
+        height: 300px;
+        min-height: 300px;
+    }
+
+    .section {
+        padding: 35px 14px;
+    }
+
+    .section-title h2 {
+        font-size: 25px;
+    }
+
+    .category img {
+        height: 150px;
+    }
+
+    .products {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 22px 10px;
+    }
+
+    .name {
+        font-size: 11px;
+    }
+
+    .price {
+        font-size: 12px;
+    }
+
+    .discount {
+        display: block;
+        margin: 5px 0 0;
+    }
+
+    .promo {
+        margin: 25px 14px;
+        padding: 28px 22px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .promo h2 {
+        font-size: 27px;
+    }
+
+    footer {
+        flex-direction: column;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="announcement">
+    NEW DROP ALERT — <span>UP TO 50% OFF SELECT STYLES</span>
+</div>
+
+<header>
+    <nav>
+        <a href="#" class="logo">DRIPZY<span>.</span></a>
+
+        <div class="nav-links">
+            <button data-category="All">New In</button>
+            <button data-category="Women">Women</button>
+            <button data-category="Men">Men</button>
+            <button data-category="Shoes">Shoes</button>
+            <button data-category="Accessories">Accessories</button>
+        </div>
+
+        <div class="search">
+            <input id="searchInput" type="search"
+            placeholder="Search your next favourite fit...">
+        </div>
+
+        <div class="actions">
+            <button id="wishlistBtn">♡ Wishlist (<span id="wishCount">0</span>)</button>
+            <button id="bagBtn">🛍 Bag (<span id="bagCount">0</span>)</button>
+        </div>
+    </nav>
+</header>
+
+<main>
+<section class="hero">
+    <div class="hero-content">
+        <div class="hero-text">
+            <div class="eyebrow">STYLE THAT SPEAKS FIRST</div>
+            <h1>Wear your<br><em>own</em> rules.</h1>
+            <p>
+                For trend remixers, outfit repeaters, and main-character
+                energy. Discover styles that feel like YOU.
+            </p>
+            <button class="btn" id="shopNow">SHOP THE DROP ↗</button>
+        </div>
+
+        <div class="hero-image">
+            <img
+              src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=1000&q=85"
+              alt="Fashion inspiration">
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="section-title">
+        <div>
+            <div class="eyebrow">PICK YOUR MOOD</div>
+            <h2>What's your vibe?</h2>
+        </div>
+    </div>
+
+    <div class="categories">
+        <button class="category" data-pick="Women">
+            <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=600&q=80" alt="Women's fashion">
+            <h3>WOMEN'S PICKS ↗</h3>
+        </button>
+
+        <button class="category" data-pick="Men">
+            <img src="https://images.unsplash.com/photo-1516257984-b1b4d707412e?auto=format&fit=crop&w=600&q=80" alt="Men's fashion">
+            <h3>MEN'S PICKS ↗</h3>
+        </button>
+
+        <button class="category" data-pick="Shoes">
+            <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600&q=80" alt="Sneakers">
+            <h3>SNEAKER ZONE ↗</h3>
+        </button>
+
+        <button class="category" data-pick="Accessories">
+            <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600&q=80" alt="Accessories">
+            <h3>ACCESSORIES ↗</h3>
+        </button>
+    </div>
+</section>
+
+<section class="section" id="shop">
+    <div class="section-title">
+        <div>
+            <div class="eyebrow">THE GOOD STUFF</div>
+            <h2>Trending right now.</h2>
+        </div>
+
+        <div class="shop-tools">
+            <span id="resultCount">12 styles</span>
+            <select id="sortSelect">
+                <option value="featured">Featured</option>
+                <option value="low">Price: Low to high</option>
+                <option value="high">Price: High to low</option>
+                <option value="rating">Top rated</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="filters" id="filters">
+        <button class="filter active" data-filter="All">All styles</button>
+        <button class="filter" data-filter="Women">Women</button>
+        <button class="filter" data-filter="Men">Men</button>
+        <button class="filter" data-filter="Shoes">Shoes</button>
+        <button class="filter" data-filter="Accessories">Accessories</button>
+        <button class="filter" data-filter="Under1000">Under ₹1,000</button>
+    </div>
+
+    <div class="products" id="products"></div>
+    <div class="empty" id="empty">No products found. Try another search.</div>
+</section>
+
+<section class="promo">
+    <div>
+        <div class="eyebrow">A LITTLE TREAT</div>
+        <h2>Your next iconic fit is waiting.</h2>
+        <p>Fresh looks. Easy energy. Zero fashion rules.</p>
+    </div>
+    <button class="btn" id="promoBtn">FIND YOUR FIT ↗</button>
+</section>
+
+<section class="newsletter">
+    <div class="eyebrow">THE DRIPZY GROUP CHAT</div>
+    <h2>Good style. Better inbox.</h2>
+    <p>Get updates on fresh drops and exclusive offers.</p>
+
+    <form id="newsletterForm">
+        <input type="email" id="emailInput"
+        placeholder="Your email address" required>
+        <button type="submit">SIGN ME UP</button>
+    </form>
+
+    <p id="newsletterMessage"></p>
+</section>
+</main>
+
+<footer>
+    <div>
+        <a href="#" class="logo">DRIPZY<span>.</span></a>
+        <p>Wear your vibe. Make it yours.</p>
+        <p>© <span id="year"></span> DRIPZY. Demo storefront.</p>
+    </div>
+
+    <div>
+        <p><a href="#shop">Shop</a> &nbsp; | &nbsp;
+        <a href="#shop">New arrivals</a> &nbsp; | &nbsp;
+        <a href="#shop">Best sellers</a></p>
+    </div>
+</footer>
+
+<div class="overlay" id="overlay"></div>
+
+<aside class="drawer" id="drawer">
+    <div class="drawer-header">
+        <h3>Your Shopping Bag</h3>
+        <button id="closeDrawer">×</button>
+    </div>
+
+    <div class="bag-items" id="bagItems"></div>
+
+    <div class="bag-footer">
+        <div class="total">
+            <span>Subtotal</span>
+            <strong id="total">₹0</strong>
+        </div>
+        <button class="btn" id="checkout">CONTINUE TO CHECKOUT ↗</button>
+        <p style="font-size:11px;color:#777;margin-top:10px">
+            Demo checkout only. No payment will be collected.
+        </p>
+    </div>
+</aside>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const products = [
+    {
+        id: 1, brand: "DRIPZY ORIGINALS",
+        name: "Oversized Graphic T-Shirt",
+        category: "Women", price: 699, old: 999, rating: 4.8,
+        image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=700&q=80"
+    },
+    {
+        id: 2, brand: "OFF DUTY",
+        name: "Everyday Street Sneakers",
+        category: "Shoes", price: 1899, old: 2499, rating: 4.7,
+        image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=700&q=80"
+    },
+    {
+        id: 3, brand: "STUDIO D",
+        name: "Relaxed Fit Shirt",
+        category: "Men", price: 1199, old: 1599, rating: 4.6,
+        image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=700&q=80"
+    },
+    {
+        id: 4, brand: "MOON CLUB",
+        name: "Mini Shoulder Bag",
+        category: "Accessories", price: 899, old: 1299, rating: 4.5,
+        image: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=700&q=80"
+    },
+    {
+        id: 5, brand: "DRIPZY DENIM",
+        name: "Baggy Blue Jeans",
+        category: "Women", price: 1499, old: 1999, rating: 4.8,
+        image: "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=700&q=80"
+    },
+    {
+        id: 6, brand: "AFTER HOURS",
+        name: "Classic Sunglasses",
+        category: "Accessories", price: 599, old: 899, rating: 4.4,
+        image: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=700&q=80"
+    },
+    {
+        id: 7, brand: "CORE CLUB",
+        name: "Everyday Hoodie",
+        category: "Men", price: 1299, old: 1799, rating: 4.7,
+        image: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=700&q=80"
+    },
+    {
+        id: 8, brand: "STEP UP",
+        name: "Retro Court Sneakers",
+        category: "Shoes", price: 2199, old: 2999, rating: 4.9,
+        image: "https://images.unsplash.com/photo-1549298916-b41d501d3772?auto=format&fit=crop&w=700&q=80"
+    },
+    {
+        id: 9, brand: "SOFT SPOT",
+        name: "Everyday Tank Top",
+        category: "Women", price: 499, old: 699, rating: 4.5,
+        image: "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=700&q=80"
+    },
+    {
+        id: 10, brand: "TIME THEORY",
+        name: "Classic Everyday Watch",
+        category: "Accessories", price: 1599, old: 2199, rating: 4.6,
+        image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=700&q=80"
+    },
+    {
+        id: 11, brand: "CITY LIMITS",
+        name: "Utility Cargo Trousers",
+        category: "Men", price: 1399, old: 1899, rating: 4.6,
+        image: "https://images.unsplash.com/photo-1517438476312-10d79c077509?auto=format&fit=crop&w=700&q=80"
+    },
+    {
+        id: 12, brand: "DRIPZY EDIT",
+        name: "Statement Party Top",
+        category: "Women", price: 999, old: 1499, rating: 4.7,
+        image: "https://images.unsplash.com/photo-1566206091558-7f218b696731?auto=format&fit=crop&w=700&q=80"
+    }
+];
+
+let category = "All";
+let search = "";
+let sort = "featured";
+let wishlist = new Set();
+let bag = [];
+
+const productArea = document.getElementById("products");
+const toast = document.getElementById("toast");
+
+function money(amount) {
+    return "₹" + amount.toLocaleString("en-IN");
+}
+
+function showToast(message) {
+    toast.textContent = message;
+    toast.classList.add("show");
+
+    clearTimeout(showToast.timer);
+    showToast.timer = setTimeout(() => {
+        toast.classList.remove("show");
+    }, 2200);
+}
+
+function getVisibleProducts() {
+    let list = products.filter(p => {
+        const matchesCategory =
+            category === "All" ||
+            (category === "Under1000" && p.price < 1000) ||
+            p.category === category;
+
+        const text = (p.name + " " + p.brand + " " + p.category).toLowerCase();
+        const matchesSearch = text.includes(search.toLowerCase());
+
+        return matchesCategory && matchesSearch;
+    });
+
+    if (sort === "low") list.sort((a, b) => a.price - b.price);
+    if (sort === "high") list.sort((a, b) => b.price - a.price);
+    if (sort === "rating") list.sort((a, b) => b.rating - a.rating);
+
+    return list;
+}
+
+function renderProducts() {
+    const list = getVisibleProducts();
+
+    document.getElementById("resultCount").textContent =
+        list.length + (list.length === 1 ? " style" : " styles");
+
+    document.getElementById("empty").style.display =
+        list.length ? "none" : "block";
+
+    productArea.innerHTML = list.map(p => {
+        const discount = Math.round((1 - p.price / p.old) * 100);
+        const liked = wishlist.has(p.id);
+
+        return `
+        <article class="product">
+            <div class="product-image">
+                <img src="${p.image}" alt="${p.name}" loading="lazy">
+                <span class="tag">TRENDING</span>
+                <button class="heart ${liked ? "liked" : ""}"
+                    data-wish="${p.id}" aria-label="Toggle wishlist">
+                    ${liked ? "♥" : "♡"}
+                </button>
+                <button class="add" data-add="${p.id}">
+                    + ADD TO BAG
+                </button>
+            </div>
+
+            <div class="product-info">
+                <div class="brand">${p.brand}</div>
+                <div class="name">${p.name}</div>
+                <div class="price">
+                    ${money(p.price)}
+                    <span class="old-price">${money(p.old)}</span>
+                    <span class="discount">${discount}% OFF</span>
+                </div>
+                <div class="rating">★ ${p.rating} | Style-approved</div>
+            </div>
+        </article>`;
+    }).join("");
+
+    document.getElementById("wishCount").textContent = wishlist.size;
+}
+
+function addToBag(id) {
+    const item = bag.find(p => p.id === id);
+
+    if (item) {
+        item.qty++;
+    } else {
+        bag.push({ id, qty: 1 });
+    }
+
+    renderBag();
+    showToast("Added to your bag!");
+}
+
+function toggleWishlist(id) {
+    if (wishlist.has(id)) {
+        wishlist.delete(id);
+        showToast("Removed from wishlist");
+    } else {
+        wishlist.add(id);
+        showToast("Added to wishlist ♥");
+    }
+
+    renderProducts();
+}
+
+function renderBag() {
+    const count = bag.reduce((sum, item) => sum + item.qty, 0);
+    document.getElementById("bagCount").textContent = count;
+
+    const bagItems = document.getElementById("bagItems");
+
+    if (!bag.length) {
+        bagItems.innerHTML = `
+            <div style="text-align:center;padding:55px 10px">
+                <h3>Your bag is empty!</h3>
+                <p style="color:#777;margin-top:10px">
+                    Find your next favourite fit.
+                </p>
+            </div>`;
+    } else {
+        bagItems.innerHTML = bag.map(item => {
+            const p = products.find(product => product.id === item.id);
+
+            return `
+            <div class="bag-item">
+                <img src="${p.image}" alt="${p.name}">
+                <div>
+                    <h4>${p.name}</h4>
+                    <p>${money(p.price)}</p>
+                    <div class="qty">
+                        <button data-qty="${p.id}" data-change="-1">−</button>
+                        <span>${item.qty}</span>
+                        <button data-qty="${p.id}" data-change="1">+</button>
+                    </div>
+                    <button class="remove" data-remove="${p.id}">
+                        Remove
+                    </button>
+                </div>
+            </div>`;
+        }).join("");
+    }
+
+    const total = bag.reduce((sum, item) => {
+        const p = products.find(product => product.id === item.id);
+        return sum + p.price * item.qty;
+    }, 0);
+
+    document.getElementById("total").textContent = money(total);
+}
+
+function setCategory(value) {
+    category = value;
+
+    document.querySelectorAll("[data-filter]").forEach(button => {
+        button.classList.toggle("active", button.dataset.filter === value);
+    });
+
+    renderProducts();
+    document.getElementById("shop").scrollIntoView({ behavior: "smooth" });
+}
+
+productArea.addEventListener("click", event => {
+    const addButton = event.target.closest("[data-add]");
+    const wishButton = event.target.closest("[data-wish]");
+
+    if (addButton) addToBag(Number(addButton.dataset.add));
+    if (wishButton) toggleWishlist(Number(wishButton.dataset.wish));
+});
+
+document.getElementById("filters").addEventListener("click", event => {
+    const button = event.target.closest("[data-filter]");
+    if (button) setCategory(button.dataset.filter);
+});
+
+document.querySelectorAll("[data-category]").forEach(button => {
+    button.addEventListener("click", () => {
+        setCategory(button.dataset.category);
+    });
+});
+
+document.querySelectorAll("[data-pick]").forEach(button => {
+    button.addEventListener("click", () => {
+        setCategory(button.dataset.pick);
+    });
+});
+
+document.getElementById("searchInput").addEventListener("input", event => {
+    search = event.target.value.trim();
+    renderProducts();
+});
+
+document.getElementById("sortSelect").addEventListener("change", event => {
+    sort = event.target.value;
+    renderProducts();
+});
+
+const drawer = document.getElementById("drawer");
+const overlay = document.getElementById("overlay");
+
+function openBag() {
+    drawer.classList.add("show");
+    overlay.classList.add("show");
+}
+
+function closeBag() {
+    drawer.classList.remove("show");
+    overlay.classList.remove("show");
+}
+
+document.getElementById("bagBtn").addEventListener("click", openBag);
+document.getElementById("closeDrawer").addEventListener("click", closeBag);
+overlay.addEventListener("click", closeBag);
+
+document.getElementById("bagItems").addEventListener("click", event => {
+    const qtyButton = event.target.closest("[data-qty]");
+    const removeButton = event.target.closest("[data-remove]");
+
+    if (qtyButton) {
+        const id = Number(qtyButton.dataset.qty);
+        const item = bag.find(p => p.id === id);
+        item.qty += Number(qtyButton.dataset.change);
+
+        if (item.qty <= 0) {
+            bag = bag.filter(p => p.id !== id);
+        }
+
+        renderBag();
+    }
+
+    if (removeButton) {
+        const id = Number(removeButton.dataset.remove);
+        bag = bag.filter(p => p.id !== id);
+        renderBag();
+    }
+});
+
+document.getElementById("wishlistBtn").addEventListener("click", () => {
+    if (!wishlist.size) {
+        showToast("Tap a heart to save your favourite products.");
+        return;
+    }
+
+    category = "All";
+    search = "";
+    document.getElementById("searchInput").value = "";
+    renderProducts();
+
+    document.querySelectorAll(".product").forEach(card => {
+        const id = Number(card.querySelector("[data-wish]").dataset.wish);
+        card.style.display = wishlist.has(id) ? "" : "none";
+    });
+
+    document.getElementById("resultCount").textContent =
+        wishlist.size + " saved styles";
+
+    document.getElementById("shop").scrollIntoView({ behavior: "smooth" });
+});
+
+document.getElementById("shopNow").addEventListener("click", () => {
+    document.getElementById("shop").scrollIntoView({ behavior: "smooth" });
+});
+
+document.getElementById("promoBtn").addEventListener("click", () => {
+    document.getElementById("shop").scrollIntoView({ behavior: "smooth" });
+});
+
+document.getElementById("checkout").addEventListener("click", () => {
+    if (!bag.length) {
+        showToast("Your bag is empty!");
+    } else {
+        showToast("Demo checkout only. Payment is not connected.");
+    }
+});
+
+document.getElementById("newsletterForm").addEventListener("submit", event => {
+    event.preventDefault();
+
+    document.getElementById("newsletterMessage").textContent =
+        "Thanks for joining DRIPZY! This is a demo form.";
+
+    document.getElementById("emailInput").value = "";
+});
+
+document.getElementById("year").textContent = new Date().getFullYear();
+
+renderProducts();
+renderBag();
+</script>
+
+</body>
+</html>
